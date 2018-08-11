@@ -3,26 +3,26 @@
 <% if @tasks.any? %>
   <table class="table table-striped">
     <thead>
-      <div class="container">
-        <div class="row">
-        <div class="col-xs-4 col-sm-2 col-lg-1">id</div>
-        <div class="col-xs-4 col-sm-2 col-lg-1">タスク</div>
-        <div class="col-xs-4 col-sm-offset-2 col-sm-2 col-lg-offset-3 col-lg-1">状態</div>
-      </div>
-
+      <tr>
+        <th>id</th>
+        <th>タスク</th>
+        <th>状態</th>
+      </tr>
     </thead>
     <tbody>
       <% @tasks.each do |task| %>
-      <div class="container">
-          <div class="col-xs-4 col-sm-2 col-sm-offset-1 col-lg-1"><%= link_to task.id, task %></div>
-          <div class="col-xs-4 col-sm-offset-1 col-sm-2 col-sm-offset-1 col-lg-1"><%= task.content %></div>
-          <div class="col-xs-4 col-sm-offset-1 col-sm-2 col-sm-offset-1 col-lg-1"><%= task.status %></div>
-      </div>
+      <tr>
+          <td><%= link_to task.id, task %></td>
+          <td><%= task.content %></td>
+          <td><%= task.status %></td>
+      </tr>
       <% end %>
     </tbody>
   </table>
 
-<% end %>
+<div>
 <%= paginate @tasks %>
+</div>
+<% end %>
 <%= link_to '新規タスクの追加', new_task_path, class: "btn btn-primary" %>
 
